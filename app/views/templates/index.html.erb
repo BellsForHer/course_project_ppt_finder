@@ -1,0 +1,11 @@
+<h1>PowerPoint Templates</h1>
+
+<% @templates.each do |template| %>
+    <h2>
+        <%= template.title %>
+    </h2>
+    <div>
+        <%= link_to "Show", template_path(template) %>
+        <%= image_tag template.image_path, style: "border: 1px solid black" %>
+    </div>
+<% end %>
