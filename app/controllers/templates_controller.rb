@@ -1,4 +1,6 @@
 class TemplatesController < ApplicationController
+    before_action :set_blog, only: [:show, :edit, :update, :destroy]
+    before_action :require_user
     def index
         @templates = Template.all
     end
@@ -8,7 +10,7 @@ class TemplatesController < ApplicationController
     end
 
     def create
-        @template = Template.new(template_params)
+        @template = helpers.current_user.templates.new(template_params)
 
         if @template.save
             flash[:notice] = "Template uploaded successfully."
@@ -46,6 +48,6 @@ class TemplatesController < ApplicationController
 
     private
     def template_params
-        params.require(:template).permit(:title, :image_path)
+        params.require(:template).permit(:title, :image_path, tag_ids: [])
     end
 end

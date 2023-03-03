@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_02_035032) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_004215) do
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags_templates", force: :cascade do |t|
+    t.integer "template_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,13 +29,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_035032) do
     t.string "image_path", default: "https://ahaslides.com/wp-content/uploads/2022/11/SEO1485-thumb.png"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
-  create_table "templates_tags", force: :cascade do |t|
-    t.integer "template_id", null: false
-    t.integer "tag_id", null: false
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end

@@ -1,5 +1,6 @@
 class Template < ApplicationRecord
     has_and_belongs_to_many :tags
+    belongs_to :user
     validates :title, presence: true, length: {minimum: 2, maximum: 100}
     validate :image_path_exists
 
