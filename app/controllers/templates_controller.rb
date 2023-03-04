@@ -1,6 +1,7 @@
 class TemplatesController < ApplicationController
-    before_action :set_blog, only: [:show, :edit, :update, :destroy]
-    before_action :require_user
+    before_action :set_template, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:show]
+    # before_action :require_same_user, only: [:destroy]
     def index
         @templates = Template.all
     end
@@ -47,6 +48,17 @@ class TemplatesController < ApplicationController
     end
 
     private
+    # def require_same_user
+    #     if helpers.current_user != @template.current_user
+    #         flash[:notice] = "Unauthorized!"
+    #         redirect_to helpers.current_user
+    #     end
+    # end
+
+    def set_template
+        @template = Template.find(params[:id])
+    end
+    
     def template_params
         params.require(:template).permit(:title, :image_path, tag_ids: [])
     end
