@@ -11,11 +11,16 @@
   </head>
 
   <body>
-  <% if flash[:notice] %>
-    <%= flash[:notice] %>
-  <%end%>
+  
     
     <%= render 'shared/nav' %>
+  
+    
+   
+
+     <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <%end%>
     <%= yield %>
   </body>
 </html>

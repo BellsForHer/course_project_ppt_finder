@@ -1,16 +1,20 @@
 <h1><%= @template.title %></h1>
+
 <% if @template.user%>
     <div><%= link_to "By: #{@template.user.username}", @template.user %></div>
 <% end %>
 <div>
     <%= image_tag @template.image_path, style: "border: 1px solid black" %>
+
 </div>
 
 <div>
     <% @template.tags.each do |tag| %>
-        <b> style="margin-right: 6px"><%=tag.name%></b>
+        <b style="margin-right: 6px"><%=tag.name%></b>
     <%end %>
 </div>
+
+<%= render 'templates/attachment', template: template%>
 <%= link_to "Edit", edit_template_path(@template)%>
 
 <% if current_user == @template.user %>

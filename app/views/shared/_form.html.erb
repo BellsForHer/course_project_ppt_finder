@@ -1,20 +1,7 @@
-<%= form_with(model: @template) do |form| %>
-    <% if @template.errors.any? %>
-        <% @template.errors.full_messages.each do |message| %>
-            <div>
-                <%= message %>
-            </div>
-            <% end %>
-        <% end %>
-        <div>
-            <%= form.label :title %>
-            <%= form.text_field :title %>
-        </div>
-        <div>
-            <%= form.label :image_path %>
-            <%= form.text_field :image_path %>
-        </div>
-    <%= form.submit :"Upload" %>
-<% end %>
+<%= form_tag "/tags", method: "GET" do %>
+    <%= label_tag :search_by_name%>
+    <%= text_field_tag :search_by_name, params[:search_by_name], class: "form-control me-2"%>
 
+<%= submit_tag "Search",class: "btn btn-outline-success" %>
+<% end %>
 

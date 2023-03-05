@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search', to: "tags#search"
    
   root to: "pages#home"
   get '/about_us', to: "pages#about_us"

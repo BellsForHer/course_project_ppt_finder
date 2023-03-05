@@ -1,9 +1,18 @@
 class PagesController < ApplicationController
   def home
     @templates = Template.all
-    @tag = Tag.all
+    @tags = Tag.all
+
+    
   end
 
-  def about_us
+  
+
+  def show 
+    @template = Template.find(params[:id])
+    @tag = Tag.find(params[:id])
+
   end
+  
+  
 end

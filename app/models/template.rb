@@ -1,8 +1,10 @@
 class Template < ApplicationRecord
     has_and_belongs_to_many :tags
     belongs_to :user
+    has_one_attached :file, dependent: :destroy
     validates :title, presence: true, length: {minimum: 2, maximum: 100}
     validate :image_path_exists
+    
 
     def image_path_exists
         require 'open-uri'
@@ -18,4 +20,11 @@ class Template < ApplicationRecord
             
         end
     end
+
+    class User < ApplicationRecord
+        has_one_attached :file do |attachable|
+          attachable.variant :thumb, resize_to_limit: [100, 100]
+        end
+      end
+      
 end

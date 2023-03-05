@@ -1,7 +1,9 @@
 class TemplatesController < ApplicationController
     before_action :set_template, only: [:show, :edit, :update, :destroy]
     before_action :require_user, except: [:show]
-    # before_action :require_same_user, only: [:destroy]
+    before_action :require_same_user, only: [:destroy]
+
+
     def index
         @templates = Template.all
     end
@@ -47,6 +49,8 @@ class TemplatesController < ApplicationController
         redirect_to templates_path
     end
 
+    
+
     private
     # def require_same_user
     #     if helpers.current_user != @template.current_user
@@ -60,6 +64,6 @@ class TemplatesController < ApplicationController
     end
     
     def template_params
-        params.require(:template).permit(:title, :image_path, tag_ids: [])
+        params.require(:template).permit(:title, :image_path, :file, tag_ids: [])
     end
 end

@@ -19,6 +19,13 @@
         <%= form.label :tag_id %>
         <%= form.collection_select(:tag_ids, Tag.all, :id, :name, {}, {multiple:true}) %>
 
+        <%= form.label :tag_id %>
+        <%= form.text_field :tag_ids %>
+
+        <%= form.label :file, style: "display: block" %>
+        <%= form.file_field :file %>
+
+
     <%= form.submit :"Upload" %>
 
 <% end %>

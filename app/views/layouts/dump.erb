@@ -1,0 +1,17 @@
+before_action :set_query
+
+    def search
+        @tags = Tag.all
+    
+        if params[:search_by_name] && params[:search_by_name] != ""
+          @tags = @tags.where("name like ?", 
+          "%# {params[:search_by_name]}%")
+        end
+    end
+    def set_query
+        @q = Tag.ransack(params[:q])
+        @tags = @q.result(distinct: true)
+    end
+
+
+    

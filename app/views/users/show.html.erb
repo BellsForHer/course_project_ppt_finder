@@ -1,12 +1,12 @@
 <h1>PowerPoint Templates</h1>
-<%
-=begin%>
- <%= @user.username %>  
-<%
-=end%>
 
-<%
-=begin%>
+
+ 
+ <%= @user.username %>   
+
+
+
+
  <% @user.templates.each do |template| %>
     <h2>
         <%= template.title %>
@@ -16,6 +16,5 @@
         <%= image_tag template.image_path, style: "border: 1px solid black" %>
     </div>
 <% end %> 
-<%
-=end%>
+
 
