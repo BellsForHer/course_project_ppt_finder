@@ -14,4 +14,16 @@ before_action :set_query
     end
 
 
-    
+    <% @tag.templates.each do |template| %>
+
+  <%=template.title%>
+  <%= image_tag template.image_path%>
+<%end%>
+
+
+<div>
+  <%= link_to "Edit this tag", edit_tag_path(@tag) %> |
+  <%= link_to "Back to tags", tags_path %>
+
+  <%= button_to "Destroy this tag", @tag, method: :delete %>
+</div>

@@ -16,5 +16,9 @@
             <%= form.label :image_path %>
             <%= form.text_field :image_path %>
         </div>
+        <div>
+        <%= form.label :file, style: "display: block" %>
+        <%= form.file_field :file %>
+        </div>
     <%= form.submit :"Update" %>
 <% end %>

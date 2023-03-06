@@ -1,4 +1,4 @@
 <% if template.file.attached? %>
     <div class="row">
-        <%= link_to template.file.filename, url_for(template.file), class:"message-file" %>
+        <%= button_to template.file.filename, url_for(template.file), class: "btn btn-primary" %>
 <% end %>

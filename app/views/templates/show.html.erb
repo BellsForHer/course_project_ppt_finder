@@ -1,23 +1,38 @@
-<h1><%= @template.title %></h1>
+<div class="container">
+  <div class="row">
+     <div class="col-xs-12.col-md-6.col-lg-4">
+        <div class="card" style="width: 100%; margin-bottom: 1rem">
+  
+          <%= image_tag @template.image_path, class: "card-img-top"%>
+            <div class="card-body">
+            <h5 class="card-title"><%= @template.title %></h5>
 
-<% if @template.user%>
-    <div><%= link_to "By: #{@template.user.username}", @template.user %></div>
-<% end %>
-<div>
-    <%= image_tag @template.image_path, style: "border: 1px solid black" %>
+          <% if @template.user%>
+           <p class="card-text"><%= link_to "By: #{@template.user.username}", @template.user %></p>
+            <% end %>
+          
+          <% @template.tags.each do |tag| %>
+          <p class="card-text"><%=tag.name%></p>
+          <%end%>     
 
+ 
+    
+          <%= link_to "Edit this Template", edit_template_path(@template), class: "btn btn-primary" %>
+
+          <%= render 'templates/attachment', template: @template, class: "btn btn-primary"%>
+          
+      
+
+          <% if current_user == @template.user %>
+            <%= button_to "Delete", @template, method: :delete, class:"btn btn-danger", style: "float-right" %>
+          <%end %>
+
+          <%= link_to "Back to templates", templates_path, class: "btn btn-primary" %>
+    
+        </div>
+      </div>
+  </div>
+ 
+</div>
 </div>
 
-<div>
-    <% @template.tags.each do |tag| %>
-        <b style="margin-right: 6px"><%=tag.name%></b>
-    <%end %>
-</div>
-
-<%= render 'templates/attachment', template: @template%>
-<%= link_to "Edit", edit_template_path(@template)%>
-
-<% if current_user == @template.user %>
-
-    <%= button_to "Destroy", @template, method: :delete %>
-<%end %>

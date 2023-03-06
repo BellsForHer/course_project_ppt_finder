@@ -52,12 +52,12 @@ class TemplatesController < ApplicationController
     
 
     private
-    # def require_same_user
-    #     if helpers.current_user != @template.current_user
-    #         flash[:notice] = "Unauthorized!"
-    #         redirect_to helpers.current_user
-    #     end
-    # end
+    def require_same_user
+        if helpers.current_user != @template.current_user
+            flash[:notice] = "Unauthorized!"
+            redirect_to helpers.current_user
+        end
+    end
 
     def set_template
         @template = Template.find(params[:id])
