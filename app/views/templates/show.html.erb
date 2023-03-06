@@ -14,7 +14,7 @@
     <%end %>
 </div>
 
-<%= render 'templates/attachment', template: template%>
+<%= render 'templates/attachment', template: @template%>
 <%= link_to "Edit", edit_template_path(@template)%>
 
 <% if current_user == @template.user %>
