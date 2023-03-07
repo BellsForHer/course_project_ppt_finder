@@ -13,14 +13,11 @@ class TemplatesController < ApplicationController
     end
 
     def create
-        
         @template = helpers.current_user.templates.new(template_params)
 
         if @template.save
             flash[:notice] = "Template uploaded successfully."
-            debugger
             redirect_to templates_path
-
         else
             flash[:notice] = "Hmm...sorry is wrong. Please try again."
             render :new, status: :unprocessable_entity
@@ -35,7 +32,7 @@ class TemplatesController < ApplicationController
         @template = Template.find(params[:id])
 
         if @template.update(template_params)
-            redirect_to template_path
+            redirect_to templates_path
         else
             render :edit, status: :unprocessable_entity
         end
